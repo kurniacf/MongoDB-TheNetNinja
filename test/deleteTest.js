@@ -10,12 +10,11 @@ describe("Delete records", function(){
             name: "Naruto"
         });
         char.save().then(function(){
-            assert(char.isNew === false);
             done();
         });
     });
 
-    // Dekete
+    // Delete
     it("Delete one record from database", function(done){
         NarutoChar.findOneAndRemove({
             name: "Naruto"

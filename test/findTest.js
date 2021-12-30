@@ -10,7 +10,6 @@ describe("Finding records", function(){
             name: "Naruto"
         });
         char.save().then(function(){
-            assert(char.isNew === false);
             done();
         });
     });
