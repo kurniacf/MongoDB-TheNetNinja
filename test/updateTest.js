@@ -7,7 +7,8 @@ describe("Update records", function(){
 
     beforeEach(function(done){
         char = new NarutoChar({
-            name: "Naruto"
+            name: "Naruto",
+            age: 17
         });
         char.save().then(function(){
             done();
@@ -31,6 +32,21 @@ describe("Update records", function(){
                 done();
             })
         });
+    });
+
+    it("Increments the age by 1", function(done){
+        NarutoChar.update({}, {
+            $inc: {
+                age: 1
+            }
+        }).then(function(){
+            NarutoChar.findOne({
+                name: "Naruto"
+            }).then(function(record){
+                assert(record.age === 18);
+                done();
+            });
+        })
     });
 
 });
